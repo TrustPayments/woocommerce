@@ -1,0 +1,631 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Trust Payments\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date:2019-03-28 10:11+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+#: includes/class-wc-trustpayments-helper.php:53
+msgid "The API access data is incomplete."
+msgstr ""
+
+#. 1: item name 2: old stock quantity 3: new stock quantity
+#: includes/class-wc-trustpayments-helper.php:439
+#: includes/webhook/class-wc-trustpayments-webhook-transaction-completion.php:90
+#, php-format
+msgid "%1$s stock increased from %2$s to %3$s."
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:90
+#, php-format
+msgid "PHP %s+ is required. (You're running version %s)"
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:93
+#, php-format
+msgid "Wordpress %s+ is required. (You're running version %s)"
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:98	
+#, php-format
+msgid "Woocommerce %s+ has to be active."
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:104
+#, php-format
+msgid "Woocommerce %s+ is required. (You're running version %s)"
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:116
+msgid "Could not activate plugin WooCommerce Trust Payments."
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:118
+msgid "Please check the following requirements before activating:"
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:260
+msgid "View Documentation"
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:260
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:148
+msgid "Documentation"
+msgstr ""
+
+#: includes/class-wc-trustpayments-customer-document.php:57
+msgid "Order Documents"
+msgstr ""
+
+#: includes/class-wc-trustpayments-customer-document.php:68
+msgid "Download Invoice"
+msgstr ""
+
+#: includes/class-wc-trustpayments-customer-document.php:80
+msgid "Download Packing Slip"
+msgstr ""
+
+#: includes/class-wc-trustpayments-customer-document.php:150
+msgid "There was an error downloading the document."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:139
+#, php-format
+msgid "Enable %s"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:146
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:151
+msgid "[not set]"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:152
+msgid "Payment method description that the customer will see on your checkout."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:155
+msgid "Show description"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:157
+#: includes/class-wc-trustpayments-gateway.php:165
+msgid "Yes"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:159
+msgid "Show the payment method's description on the checkout page."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:163
+msgid "Show method image"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:167
+msgid "Show the payment method's image on the checkout page."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:329
+msgid "Please fill out all required fields."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:381
+msgid "The checkout timed out, please try again."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:391
+msgid ""
+"There was an issue, while processing your order. Please try again or use "
+"another payment method."
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:477
+msgid "There was a problem creating the refund."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-document.php:59
+#: includes/admin/class-wc-trustpayments-admin-document.php:141
+msgid "Invoice"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-document.php:70
+#: includes/admin/class-wc-trustpayments-admin-document.php:155
+msgid "Packing Slip"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-document.php:95
+msgid "trustpayments Documents"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-document.php:202
+msgid "Could not fetch the document from Trust Payments."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:133
+msgid "There is a completion/void in progress."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:134
+#: includes/admin/class-wc-trustpayments-admin-refund.php:61
+msgid "Update"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:137
+msgid "Void"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:138
+msgid "Completion"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:175
+msgid ""
+"Are you sure you wish to process this void? This action cannot be undone."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:176
+msgid ""
+"Are you sure you wish to process this completion? This action cannot be "
+"undone."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:228
+msgid "View Settings"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:228
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:256
+#: includes/admin/class-wc-trustpayments-admin.php:267
+msgid "Send attribute to Trust Payments."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-refund.php:60
+msgid "There is a refund in progress."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-refund.php:94
+msgid "Could not load corresponding transaction"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-refund.php:101
+msgid "Please wait until the pending refund is processed."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-refund.php:155
+#: includes/admin/class-wc-trustpayments-admin-refund.php:162
+#, php-format
+msgid ""
+"There has been an error while sending the refund to the gateway. Error: %s"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-refund.php:182
+#, php-format
+msgid "Error updating refund job with id %d: %s"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:46
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:46
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:48
+msgid "Execute Completion"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:50
+msgid "Restock not completed items"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:52
+msgid "Completion Amount"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:118
+msgid "The tax rate can not be changed."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:127
+msgid ""
+"The line item total does not correspond to the total amount to complete."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:141
+msgid "The transaction is not in a state to be completed."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:146
+msgid "Please wait until the existing completion is processed."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:150
+msgid "There is a void in process. The order can not be completed."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:179
+msgid "The completion is updated automatically once the result is available."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-completion.php:298
+#, php-format
+msgid "Error updating completion job with id %d: %s"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:48
+msgid "Execute Void"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:49
+msgid "Restock items"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:83
+msgid "The transaction is not in a state to be voided."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:88
+msgid "Please wait until the existing void is processed."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:92
+msgid "There is a completion in process. The order can not be voided."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:117
+msgid "The transaction is updated automatically once the result is available."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-order-void.php:186
+#, php-format
+msgid "Error updating void job with id %d: %s"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:79
+msgid "General Details"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:84
+msgid "Payment Method"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:97
+msgid "Transaction State"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:103
+msgid "Failure Reason"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:108
+msgid "Authorization Amount"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:112
+msgid "Transaction"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:116
+msgid "View in Trust Payments"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:162
+msgid "Authorized"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:164
+msgid "Completed"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:166
+msgid "Confirmed"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:168
+msgid "Decline"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:170
+msgid "Failed"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:172
+msgid "Fulfill"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:174
+msgid "Pending"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:176
+msgid "Processing"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:178
+msgid "Voided"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:180
+msgid "Unknown State"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:77
+msgid "Could not update payment method configuration."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:86
+msgid ""
+"Could not install webhooks, please check if the feature is active in your "
+"space."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:95
+msgid "Could not update the manual task list."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:107
+msgid ""
+"Please check your credentials and grant the application user the necessary "
+"rights (Account Admin) for your space."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:149
+msgid "Sign Up"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:155
+msgid "General Settings"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:157
+msgid ""
+"Enter your application user credentials and space id, if you don't have an "
+"account already sign up above."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:164
+msgid "Space Id"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:168
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:177
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:185
+msgid "(required)"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:172
+msgid "User Id"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:173
+msgid ""
+"The user needs to have full permissions in the space this shop is linked to."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:181
+msgid "Authentication Key"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:194
+msgid "Email Options"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:200
+msgid "Send Order Email"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:201
+msgid "Send the order email of WooCommerce."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:214
+msgid "Document Options"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:220
+msgid "Invoice Download"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:221
+msgid "Allow customers to download the invoice."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:228
+msgid "Packing Slip Download"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:229
+msgid "Allow customers to download the packing slip."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:242
+msgid "Space View Options"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:248
+msgid "Space View Id"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:249
+msgid ""
+"The Space View Id allows to control the styling of the payment form and the "
+"payment page within the space."
+msgstr ""
+
+#: includes/webhook/class-wc-trustpayments-webhook-delivery-indication.php:53
+msgid "A manual decision about whether to accept the payment is required."
+msgstr ""
+
+#: includes/service/class-wc-trustpayments-service-refund.php:167
+msgid "Could not distribute the rounding difference."
+msgstr ""
+
+#: includes/service/class-wc-trustpayments-service-transaction.php:374
+msgid "The checkout expired, please try again."
+msgstr ""
+
+#: views/admin-notices/manual-tasks.php:18
+msgid "There is a manual task that needs your attention."
+msgstr ""
+
+#: views/admin-notices/manual-tasks.php:21
+#, php-format
+msgid "There is %s manual task that needs your attention."
+msgid_plural "There are %s manual tasks that need your attention"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views/admin-notices/manual-tasks.php:26
+msgid "View"
+msgstr ""
+
+#: views/admin-notices/round-subtotal-warning.php:15
+msgid ""
+"The Trust Payments payment method are not available, if the taxes are rounded at "
+"subtotal level. Please disable the 'Round tax at subtotal level, instead of "
+"rounding per line' in the tax settings to enable the Trust Payments payment methods."
+msgstr ""
+
+#: views/admin-notices/migration-failed.php:15
+msgid "There was an issue executing the migration for WooCommerce Trust Payments."
+msgstr ""
+
+#: views/admin-notices/plugin-deactivated.php:14
+msgid "WooCommerce Trust Payments deactivated because it depends on WooCommerce."
+msgstr ""
+
+#. Name of the plugin
+msgid "WooCommerce Trust Payments"
+msgstr ""
+
+#. Description of the plugin
+msgid "Process WooCommerce payments with Trust Payments."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/woo-trustpayments"
+msgstr ""
+
+#. Author of the plugin
+msgid "wallee GmbH"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.wallee.com"
+msgstr ""	
+
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:277
+msgid "Require that the transaction line items total is matching the order total."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:276
+msgid "Enforce Consistency"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:270
+msgid "Line Items Options"
+msgstr ""
+
+#: includes/class-wc-trustpayments-helper.php:207
+msgid "Adjustment"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:253
+msgid "The integration type controls how the payment form is integrated into the WooCommerce checkout. The Lightbox integration type offers better performance but with a less compelling checkout experience."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:252
+msgid "Integration Type"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:245
+msgid "Integration Options"
+msgstr ""
+
+#: views/admin-notices/round-subtotal-warning.php:15
+msgid "The Trust Payments payment methods are not available, if the taxes are rounded at subtotal level. Please disable the 'Round tax at subtotal level, instead of rounding per line' in the tax settings to enable the Trust Payments payment methods."
+msgstr ""
+
+#: woocommerce-trustpayments.php:296
+msgctxt "Order status"
+msgid "Manual Decision"
+msgstr ""
+
+#: woocommerce-trustpayments.php:295
+msgctxt "Order status"
+msgid "Waiting"
+msgstr ""
+
+#: woocommerce-trustpayments.php:294
+msgctxt "Order status"
+msgid "Redirected"
+msgstr ""
+
+#: woocommerce-trustpayments.php:289
+msgid "Manual Decision <span class=\"count\">(%s)</span>"
+msgid_plural "Manual Decision <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce-trustpayments.php:280
+msgid "Waiting <span class=\"count\">(%s)</span>"
+msgid_plural "Waiting <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce-trustpayments.php:271
+msgid "Trust Payments Processing <span class=\"count\">(%s)</span>"
+msgid_plural "Trust Payments Processing <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wc-trustpayments-cron.php:31
+msgid "Every Five Minutes"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:149
+msgid "Description"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:143
+msgid "Title"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:137
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/class-wc-trustpayments-migration.php:113
+msgid "Install the PHP cUrl extension or ensure the 'stream_socket_client' function is available."
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin.php:262
+#: includes/admin/class-wc-trustpayments-admin.php:270
+msgid "Should this product attribute be sent to Trust Payments as line item attribute?"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-document.php:93
+msgid "Trust Payments Documents"
+msgstr ""
+
+#: includes/admin/class-wc-trustpayments-admin-transaction.php:43
+msgid "Trust Payments Transaction"
+msgstr ""
+
+#: includes/class-wc-trustpayments-gateway.php:143
+#: includes/admin/class-wc-trustpayments-admin-notices.php:104
+#: includes/admin/class-wc-trustpayments-admin-settings-page.php:104
+msgid "'WooCommerce > Settings > TrustPayments > Enforce Consistency' and 'WooCommerce > Settings > Tax > Rounding' are both enabled. Please disable at least one of them."
+msgstr ""
