@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
  *
  * This WooCommerce plugin enables to process payments with Trust Payments (https://www.trustpayments.com/).
  *
- * @author wallee AG (http://www.customweb.com/)
+ * @author wallee AG (http://www.wallee.com/)
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
  */
 /**
@@ -138,7 +138,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 		$settings = array(
 		    array(
 		        'links' => array(
-		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.3.11/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
+		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.4.0/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
 		            'https://ep.trustpayments.com/user/signup' => __('Sign Up', 'woo-trustpayments')
 		        ),
 		        'type' => 'trustpayments_links',

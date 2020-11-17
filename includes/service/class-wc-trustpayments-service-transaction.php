@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
  *
  * This WooCommerce plugin enables to process payments with Trust Payments (https://www.trustpayments.com/).
  *
- * @author wallee AG (http://www.customweb.com/)
+ * @author wallee AG (http://www.wallee.com/)
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
  */
 /**
@@ -390,8 +390,13 @@ class WC_TrustPayments_Service_Transaction extends WC_TrustPayments_Service_Abst
     	                $transaction->getAllowedPaymentMethodConfigurations();
     	            return self::$possible_payment_method_cache[$current_cart_id];
     	        }
-	            $payment_methods = $this->get_transaction_service()->fetchPossiblePaymentMethods($transaction->getLinkedSpaceId(), $transaction->getId());
-	            
+				$integration_method = get_option(WooCommerce_TrustPayments::CK_INTEGRATION);
+				$payment_methods = $this->get_transaction_service()->fetchPaymentMethods(
+					$transaction->getLinkedSpaceId(),
+					$transaction->getId(),
+					$integration_method
+				);
+
         		$method_configuration_service = WC_TrustPayments_Service_Method_Configuration::instance();
         		$possible_methods = array();
     			foreach ($payment_methods as $payment_method) {
@@ -427,7 +432,12 @@ class WC_TrustPayments_Service_Transaction extends WC_TrustPayments_Service_Abst
     	                $transaction->getAllowedPaymentMethodConfigurations();
     	            return self::$possible_payment_method_cache[$order->get_id()];
     	        }
-	            $payment_methods = $this->get_transaction_service()->fetchPossiblePaymentMethods($transaction->getLinkedSpaceId(), $transaction->getId());        
+				$integration_method = get_option(WooCommerce_TrustPayments::CK_INTEGRATION);
+				$payment_methods = $this->get_transaction_service()->fetchPaymentMethods(
+					$transaction->getLinkedSpaceId(),
+					$transaction->getId(),
+					$integration_method
+				);
                 $method_configuration_service = WC_TrustPayments_Service_Method_Configuration::instance();
                 $possible_methods = array();
                 foreach ($payment_methods as $payment_method) {
