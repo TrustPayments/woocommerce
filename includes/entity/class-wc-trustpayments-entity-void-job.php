@@ -48,7 +48,7 @@ class WC_TrustPayments_Entity_Void_Job extends WC_TrustPayments_Entity_Abstract 
 	}
 
 	protected static function get_table_name(){
-		return 'woocommerce_trustpayments_void_job';
+		return 'wc_trustpayments_void_job';
 	}
 
 	/**

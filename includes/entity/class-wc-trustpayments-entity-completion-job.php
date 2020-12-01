@@ -55,7 +55,7 @@ class WC_TrustPayments_Entity_Completion_Job extends WC_TrustPayments_Entity_Abs
 	}
 
 	protected static function get_table_name(){
-		return 'woocommerce_trustpayments_completion_job';
+		return 'wc_trustpayments_completion_job';
 	}
 
 	/**

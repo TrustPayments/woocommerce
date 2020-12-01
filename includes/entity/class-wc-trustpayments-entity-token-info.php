@@ -45,7 +45,7 @@ class WC_TrustPayments_Entity_Token_Info extends WC_TrustPayments_Entity_Abstrac
 	}
 
 	protected static function get_table_name(){
-		return 'woocommerce_trustpayments_token_info';
+		return 'wc_trustpayments_token_info';
 	}
 
 	public static function load_by_token($space_id, $token_id){

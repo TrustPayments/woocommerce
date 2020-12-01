@@ -52,7 +52,7 @@ class WC_TrustPayments_Entity_Method_Configuration extends WC_TrustPayments_Enti
 	}
 
 	protected static function get_table_name(){
-		return 'woocommerce_trustpayments_method_configuration';
+		return 'wc_trustpayments_method_config';
 	}
 	
 	public static function load_by_configuration($space_id, $configuration_id){

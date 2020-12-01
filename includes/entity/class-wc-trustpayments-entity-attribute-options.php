@@ -37,7 +37,7 @@ class WC_TrustPayments_Entity_Attribute_Options extends WC_TrustPayments_Entity_
 	}
 
 	protected static function get_table_name(){
-		return 'woocommerce_trustpayments_attribute_options';
+		return 'wc_trustpayments_attribute_options';
 	}
 
 	protected function prepare_base_fields_for_storage(&$data_array, &$type_array){

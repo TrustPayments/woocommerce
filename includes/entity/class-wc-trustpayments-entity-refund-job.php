@@ -52,7 +52,7 @@ class WC_TrustPayments_Entity_Refund_Job extends WC_TrustPayments_Entity_Abstrac
 	}
 
 	protected static function get_table_name(){
-		return 'woocommerce_trustpayments_refund_job';
+		return 'wc_trustpayments_refund_job';
 	}
 
 	/**

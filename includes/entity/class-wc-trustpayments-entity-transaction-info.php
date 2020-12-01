@@ -72,7 +72,7 @@ class WC_TrustPayments_Entity_Transaction_Info extends WC_TrustPayments_Entity_A
 	}
 
 	protected static function get_table_name(){
-		return 'woocommerce_trustpayments_transaction_info';
+		return 'wc_trustpayments_transaction_info';
 	}
 
 	/**
