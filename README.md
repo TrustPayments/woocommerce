@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/TrustPayments/woocommerce.svg?branch=master)](https://travis-ci.org/TrustPayments/woocommerce)
 
+> This plugin supports the Trust Enterprise Platform which can be identified by the URL for the platform ep.trustpayments.com.
+
 # Trust Payments Woocommerce
 This repository contains the Trust Payments WooCommerce plugin that enables WooCommerce to process payments with [Trust Payments](https://www.trustpayments.com/).
 
@@ -13,7 +15,7 @@ This repository contains the Trust Payments WooCommerce plugin that enables WooC
 
 ## Documentation
 
-* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.5.2/docs/en/documentation.html)
+* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.5.3/docs/en/documentation.html)
 
 ## Support
 
@@ -22,8 +24,4 @@ Support queries can be issued on the [Trust Payments support site](https://www.t
 
 ## License
 
-Please see the [license file](https://github.com/TrustPayments/woocommerce/blob/1.5.2/LICENSE) for more information.
-
-
-
-
+Please see the [license file](https://github.com/TrustPayments/woocommerce/blob/1.5.3/LICENSE) for more information.
