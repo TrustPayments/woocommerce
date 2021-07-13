@@ -62,7 +62,14 @@ class WC_TrustPayments_Service_Webhook extends WC_TrustPayments_Service_Abstract
 				array(
 				    \TrustPayments\Sdk\Model\DeliveryIndicationState::MANUAL_CHECK_REQUIRED 
 				), 'WC_TrustPayments_Webhook_Delivery_Indication');
-		
+
+		$this->webhook_entities[1472041816898] = new WC_TrustPayments_Webhook_Entity(1472041816898, 'Transaction Invoice',
+			array(
+				\TrustPayments\Sdk\Model\TransactionInvoiceState::NOT_APPLICABLE,
+				\TrustPayments\Sdk\Model\TransactionInvoiceState::PAID,
+				\TrustPayments\Sdk\Model\TransactionInvoiceState::DERECOGNIZED,
+			), 'WC_TrustPayments_Webhook_Transaction_Invoice');
+
 	    $this->webhook_entities[1472041831364] = new WC_TrustPayments_Webhook_Entity(1472041831364, 'Transaction Completion', 
 				array(
 				    \TrustPayments\Sdk\Model\TransactionCompletionState::FAILED,
