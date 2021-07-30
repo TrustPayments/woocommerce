@@ -214,12 +214,6 @@ jQuery(function ($) {
                         self.update_sent = false;
                         return false;
                     }
-                    if(trustpayments_js_params.integration && trustpayments_js_params.integration === self.integrations.LIGHTBOX ) {
-                        jqXHR.abort();
-                        $(self.checkout_payment_area).unblock();
-                        self.update_sent = false;
-                        return false;
-                    }
                     self.update_sent = true;
                 }
             });
