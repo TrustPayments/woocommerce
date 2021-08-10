@@ -138,7 +138,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 		$settings = array(
 		    array(
 		        'links' => array(
-		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.5.8/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
+		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.5.9/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
 		            'https://ep.trustpayments.com/user/signup' => __('Sign Up', 'woo-trustpayments')
 		        ),
 		        'type' => 'trustpayments_links',
@@ -241,7 +241,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 		        'title' => __('Space View Id', 'woo-trustpayments'),
 		        'desc_tip' => __('The Space View Id allows to control the styling of the payment form and the payment page within the space.', 'woo-trustpayments'),
 		        'id' => WooCommerce_TrustPayments::CK_SPACE_VIEW_ID,
-		        'type' => 'text',
+		        'type' => 'number',
 		        'css' => 'min-width:300px;'
 		    ),
 		    

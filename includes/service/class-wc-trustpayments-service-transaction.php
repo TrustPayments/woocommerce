@@ -379,11 +379,11 @@ class WC_TrustPayments_Service_Transaction extends WC_TrustPayments_Service_Abst
      * @throws WC_TrustPayments_Exception_Invalid_Transaction_Amount
      */
 	public function get_possible_payment_methods_for_cart(){
-	    
+
 	    $current_cart_id = WC_TrustPayments_Helper::instance()->get_current_cart_id();
 	    if (!isset(self::$possible_payment_method_cache[$current_cart_id]) || is_null(self::$possible_payment_method_cache[$current_cart_id])) {
 	        try {
-	        
+
     	        $transaction = $this->get_transaction_from_session();
     	        if($transaction->getState() != \TrustPayments\Sdk\Model\TransactionState::PENDING){
     	            self::$possible_payment_method_cache[$current_cart_id] =

@@ -74,8 +74,8 @@ class WC_TrustPayments_Gateway extends WC_Payment_Gateway {
 	 */
 	public function get_payment_method_configuration(){
 		if (is_null($this->tru_payment_method_configuration)) {
-		    $this->tru_payment_method_configuration = WC_TrustPayments_Entity_Method_Configuration::load_by_id(
-					$this->tru_payment_method_configuration_id);
+			$this->tru_payment_method_configuration = WC_TrustPayments_Entity_Method_Configuration::load_by_id(
+				$this->tru_payment_method_configuration_id);
 		}
 		return $this->tru_payment_method_configuration;
 	}
@@ -281,6 +281,20 @@ class WC_TrustPayments_Gateway extends WC_Payment_Gateway {
 		        WooCommerce_TrustPayments::instance()->log($e->getMessage(), WC_Log_Levels::ERROR);
 		        return false;
 		    }
+			catch (\TrustPayments\Sdk\ApiException $e) {
+				WooCommerce_TrustPayments::instance()->log($e->getMessage(), WC_Log_Levels::DEBUG);
+				$response_object = $e->getResponseObject();
+				$isClientError = ($response_object instanceof \TrustPayments\Sdk\Model\ClientError);
+				if ($isClientError) {
+					$error_types = ["CONFIGURATION_ERROR", "DEVELOPER_ERROR"];
+					if (in_array($response_object->getType(), $error_types)) {
+						$message = $response_object->getType() . ': ' . $response_object->getMessage();
+						wc_print_notice( __( $message, 'woocommerce' ), 'error' );
+						return false;
+					}
+				}
+				return false;
+			}
 		    catch(Exception $e){
 		        WooCommerce_TrustPayments::instance()->log($e->getMessage(), WC_Log_Levels::DEBUG);
 		        return false;
@@ -311,7 +325,7 @@ class WC_TrustPayments_Gateway extends WC_Payment_Gateway {
 	}
 
 	public function payment_fields(){
-	    
+
 	    parent::payment_fields();
 	    $transaction_service = WC_TrustPayments_Service_Transaction::instance();
 	    try{
