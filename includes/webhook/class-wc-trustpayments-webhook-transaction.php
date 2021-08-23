@@ -18,7 +18,11 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
 	/**
 	 *
 	 * @see WC_TrustPayments_Webhook_Order_Related_Abstract::load_entity()
+	 *
+	 * @param \WC_TrustPayments_Webhook_Request $request
+	 *
 	 * @return \TrustPayments\Sdk\Model\Transaction
+	 * @throws \Exception
 	 */
     protected function load_entity(WC_TrustPayments_Webhook_Request $request){
         $transaction_service = new \TrustPayments\Sdk\Service\TransactionService(WC_TrustPayments_Helper::instance()->get_api_client());
@@ -42,7 +46,7 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
 		if ($transaction->getState() != $transaction_info->get_state()) {
 			switch ($transaction->getState()) {
 			    case \TrustPayments\Sdk\Model\TransactionState::CONFIRMED:
-			    case \TrustPayments\Sdk\Model\TransactionState::PROCESSING:					
+			    case \TrustPayments\Sdk\Model\TransactionState::PROCESSING:
 					$this->confirm($transaction, $order);
 					break;
 			    case \TrustPayments\Sdk\Model\TransactionState::AUTHORIZED:
@@ -53,6 +57,9 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
 					break;
 			    case \TrustPayments\Sdk\Model\TransactionState::FAILED:
 					$this->failed($transaction, $order);
+					break;
+				case \TrustPayments\Sdk\Model\TransactionState::FULFILL:
+					$this->authorize($transaction, $order);
 					break;
 			    case \TrustPayments\Sdk\Model\TransactionState::VOIDED:
 					$this->voided($transaction, $order);
@@ -66,7 +73,7 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
 					break;
 			}
 		}
-		
+
 		WC_TrustPayments_Service_Transaction::instance()->update_transaction_info($transaction, $order);
 	}
 
@@ -80,11 +87,15 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
 	   }
 	}
 
+	/**
+	 * @param \TrustPayments\Sdk\Model\Transaction $transaction
+	 * @param \WC_Order                                    $order
+	 */
 	protected function authorize(\TrustPayments\Sdk\Model\Transaction $transaction, WC_Order $order){
-	    if (!$order->get_meta("_trustpayments_authorized", true)) {
+	    if (!$order->get_meta('_trustpayments_authorized', true)) {
     	    do_action('wc_trustpayments_authorized', $transaction , $order);
     		$status = apply_filters('wc_trustpayments_authorized_status', 'on-hold', $order);
-    		$order->add_meta_data("_trustpayments_authorized", "true", true);
+    		$order->add_meta_data('_trustpayments_authorized', 'true', true);
     		$order->update_status($status);
     		wc_maybe_reduce_stock_levels($order->get_id());
     		if (isset(WC()->cart)) {
@@ -97,7 +108,7 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
 		if (!$order->get_meta('_trustpayments_manual_check', true)) {
 		    do_action('wc_trustpayments_completed', $transaction , $order);
 			$status = apply_filters('wc_trustpayments_completed_status', 'trustp-waiting', $order);
-			$order->update_status($status);	
+			$order->update_status($status);
 		}
 	}
 

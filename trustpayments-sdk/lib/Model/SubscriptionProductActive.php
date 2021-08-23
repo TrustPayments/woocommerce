@@ -22,15 +22,15 @@ namespace TrustPayments\Sdk\Model;
 use \TrustPayments\Sdk\ObjectSerializer;
 
 /**
- * PaymentTerminalContactAddress model
+ * SubscriptionProductActive model
  *
  * @category    Class
- * @description 
+ * @description A subscription product represents a product to which a subscriber can subscribe to. A product defines how much the subscription costs and in what cycles the subscribe is charged.
  * @package     TrustPayments\Sdk
  * @author      customweb GmbH
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
-class PaymentTerminalContactAddress extends PaymentTerminalAddress 
+class SubscriptionProductActive extends AbstractSubscriptionProductActive 
 {
     const DISCRIMINATOR = null;
 
@@ -39,7 +39,7 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
       *
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentTerminalContactAddress';
+    protected static $swaggerModelName = 'SubscriptionProduct.Active';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -47,10 +47,8 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'family_name' => 'string',
-        'given_name' => 'string',
-        'organization_name' => 'string',
-        'phone_number' => 'string'
+        'id' => 'int',
+        'version' => 'int'
     ];
 
     /**
@@ -59,10 +57,8 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'family_name' => null,
-        'given_name' => null,
-        'organization_name' => null,
-        'phone_number' => null
+        'id' => 'int64',
+        'version' => 'int64'
     ];
 
     /**
@@ -72,10 +68,8 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
      * @var string[]
      */
     protected static $attributeMap = [
-        'family_name' => 'familyName',
-        'given_name' => 'givenName',
-        'organization_name' => 'organizationName',
-        'phone_number' => 'phoneNumber'
+        'id' => 'id',
+        'version' => 'version'
     ];
 
     /**
@@ -84,10 +78,8 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
      * @var string[]
      */
     protected static $setters = [
-        'family_name' => 'setFamilyName',
-        'given_name' => 'setGivenName',
-        'organization_name' => 'setOrganizationName',
-        'phone_number' => 'setPhoneNumber'
+        'id' => 'setId',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -96,10 +88,8 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
      * @var string[]
      */
     protected static $getters = [
-        'family_name' => 'getFamilyName',
-        'given_name' => 'getGivenName',
-        'organization_name' => 'getOrganizationName',
-        'phone_number' => 'getPhoneNumber'
+        'id' => 'getId',
+        'version' => 'getVersion'
     ];
 
     
@@ -116,13 +106,9 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
         parent::__construct($data);
 
         
-        $this->container['family_name'] = isset($data['family_name']) ? $data['family_name'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         
-        $this->container['given_name'] = isset($data['given_name']) ? $data['given_name'] : null;
-        
-        $this->container['organization_name'] = isset($data['organization_name']) ? $data['organization_name'] : null;
-        
-        $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
         
     }
 
@@ -135,6 +121,16 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
     {
         $invalidProperties = parent::listInvalidProperties();
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 100.";
+        }
+
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -216,100 +212,50 @@ class PaymentTerminalContactAddress extends PaymentTerminalAddress
     
 
     /**
-     * Gets family_name
+     * Gets id
      *
-     * @return string
+     * @return int
      */
-    public function getFamilyName()
+    public function getId()
     {
-        return $this->container['family_name'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets family_name
+     * Sets id
      *
-     * @param string $family_name 
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
-    public function setFamilyName($family_name)
+    public function setId($id)
     {
-        $this->container['family_name'] = $family_name;
+        $this->container['id'] = $id;
 
         return $this;
     }
     
 
     /**
-     * Gets given_name
+     * Gets version
      *
-     * @return string
+     * @return int
      */
-    public function getGivenName()
+    public function getVersion()
     {
-        return $this->container['given_name'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets given_name
+     * Sets version
      *
-     * @param string $given_name 
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
      *
      * @return $this
      */
-    public function setGivenName($given_name)
+    public function setVersion($version)
     {
-        $this->container['given_name'] = $given_name;
-
-        return $this;
-    }
-    
-
-    /**
-     * Gets organization_name
-     *
-     * @return string
-     */
-    public function getOrganizationName()
-    {
-        return $this->container['organization_name'];
-    }
-
-    /**
-     * Sets organization_name
-     *
-     * @param string $organization_name 
-     *
-     * @return $this
-     */
-    public function setOrganizationName($organization_name)
-    {
-        $this->container['organization_name'] = $organization_name;
-
-        return $this;
-    }
-    
-
-    /**
-     * Gets phone_number
-     *
-     * @return string
-     */
-    public function getPhoneNumber()
-    {
-        return $this->container['phone_number'];
-    }
-
-    /**
-     * Sets phone_number
-     *
-     * @param string $phone_number 
-     *
-     * @return $this
-     */
-    public function setPhoneNumber($phone_number)
-    {
-        $this->container['phone_number'] = $phone_number;
+        $this->container['version'] = $version;
 
         return $this;
     }
