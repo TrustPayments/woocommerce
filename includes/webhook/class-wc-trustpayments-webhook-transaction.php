@@ -60,6 +60,7 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
 					break;
 				case \TrustPayments\Sdk\Model\TransactionState::FULFILL:
 					$this->authorize($transaction, $order);
+					$this->fulfill($transaction, $order);
 					break;
 			    case \TrustPayments\Sdk\Model\TransactionState::VOIDED:
 					$this->voided($transaction, $order);
@@ -126,6 +127,13 @@ class WC_TrustPayments_Webhook_Transaction extends WC_TrustPayments_Webhook_Orde
     		$order->update_status($status);
     		WC_TrustPayments_Helper::instance()->maybe_restock_items_for_order($order);
 	    }
+	}
+
+	protected function fulfill(\TrustPayments\Sdk\Model\Transaction $transaction, WC_Order $order){
+		do_action('wc_trustpayments_fulfill', $transaction , $order);
+		//Sets the status to procesing or complete depending on items
+		$order->payment_complete($transaction->getId());
+
 	}
 
 	protected function voided(\TrustPayments\Sdk\Model\Transaction $transaction, WC_Order $order){

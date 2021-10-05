@@ -53,6 +53,7 @@ class WC_TrustPayments_Service_Webhook extends WC_TrustPayments_Service_Abstract
 				    \TrustPayments\Sdk\Model\TransactionState::AUTHORIZED,
 				    \TrustPayments\Sdk\Model\TransactionState::DECLINE,
 				    \TrustPayments\Sdk\Model\TransactionState::FAILED,
+					\TrustPayments\Sdk\Model\TransactionState::FULFILL,
 				    \TrustPayments\Sdk\Model\TransactionState::VOIDED,
 				    \TrustPayments\Sdk\Model\TransactionState::COMPLETED,
 				    \TrustPayments\Sdk\Model\TransactionState::PROCESSING
