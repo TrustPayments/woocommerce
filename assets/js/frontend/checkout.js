@@ -458,7 +458,8 @@ jQuery(function ($) {
             return formatted_message;
         }
     };
-
-    wc_trustpayments_checkout.init();
+    if (typeof elementor === 'undefined') {
+        wc_trustpayments_checkout.init();
+    }
 
 });
