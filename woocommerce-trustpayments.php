@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Trust Payments
  * Plugin URI: https://wordpress.org/plugins/woo-trustpayments
  * Description: Process WooCommerce payments with Trust Payments.
- * Version: 1.7.11
+ * Version: 1.7.12
  * License: Apache2
  * License URI: http://www.apache.org/licenses/LICENSE-2.0
  * Author: wallee AG
@@ -45,7 +45,7 @@ if (!class_exists('WooCommerce_TrustPayments')) {
 		 *
 		 * @var string
 		 */
-		private $version = '1.7.11';
+		private $version = '1.7.12';
 		
 		/**
 		 * The single instance of the class.
