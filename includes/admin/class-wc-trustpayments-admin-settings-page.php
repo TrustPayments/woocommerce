@@ -138,7 +138,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 		$settings = array(
 		    array(
 		        'links' => array(
-		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.7.12/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
+		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.7.13/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
 		            'https://ep.trustpayments.com/user/signup' => __('Sign Up', 'woo-trustpayments')
 		        ),
 		        'type' => 'trustpayments_links',
@@ -265,8 +265,8 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
                 'css' => 'min-width:300px;',
                 'default' => WC_TrustPayments_Integration::IFRAME,
                 'options' => array(
-                    WC_TrustPayments_Integration::IFRAME => __(WC_TrustPayments_Integration::IFRAME, 'woo-trustpayments'),
-                    WC_TrustPayments_Integration::LIGHTBOX  => __(WC_TrustPayments_Integration::LIGHTBOX, 'woo-trustpayments'),
+                    WC_TrustPayments_Integration::IFRAME => $this->format_display_string(__(WC_TrustPayments_Integration::IFRAME, 'woo-trustpayments')),
+                    WC_TrustPayments_Integration::LIGHTBOX  => $this->format_display_string(__(WC_TrustPayments_Integration::LIGHTBOX, 'woo-trustpayments')),
                 ),
             ),
 
@@ -295,9 +295,38 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
                 'id' => 'line_items_options'
             ),
 
+            array(
+                'title' => __('Reference Options', 'woo-trustpayments'),
+                'type' => 'title',
+                'id' => 'reference_options'
+            ),
+
+
+            array(
+                'title' => __('Order Reference Type', 'woo-trustpayments'),
+                'desc_tip' => __('Choose which order reference is sent.', 'woo-trustpayments'),
+                'id' => WooCommerce_TrustPayments::CK_ORDER_REFERENCE,
+                'type' => 'select',
+                'css' => 'min-width:300px;',
+                'default' => WC_TrustPayments_Order_Reference::ORDER_ID,
+                'options' => array(
+                    WC_TrustPayments_Order_Reference::ORDER_ID => $this->format_display_string(__(WC_TrustPayments_Order_Reference::ORDER_ID, 'woo-trustpayments')),
+                    WC_TrustPayments_Order_Reference::ORDER_NUMBER  => $this->format_display_string(__(WC_TrustPayments_Order_Reference::ORDER_NUMBER, 'woo-trustpayments')),
+                ),
+            ),
+
+            array(
+                'type' => 'sectionend',
+                'id' => 'reference_options'
+            ),
+
 
         );
 		
 		return apply_filters('wc_trustpayments_settings', $settings);
+	}
+
+	private function format_display_string($display_string){
+		return ucwords(str_replace("_", " ", $display_string));
 	}
 }
