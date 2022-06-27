@@ -136,7 +136,7 @@ class WC_TrustPayments_Service_Transaction extends WC_TrustPayments_Service_Abst
 	 */
 	public function clear_transaction_cache() {
 		$this->transaction_cache = array();
-		WC()->session->set('wallee_transaction_id', null);
+		WC()->session->set('trustpayments_transaction_id', null);
 	}
 
 	/**
