@@ -5,7 +5,7 @@
 # Trust Payments Woocommerce
 This repository contains the Trust Payments WooCommerce plugin that enables WooCommerce to process payments with [Trust Payments](https://www.trustpayments.com/).
 
-##### To use this extension, a [Trust Payments](https://www.trustpayments.com/) account is required.
+##### To use this extension, a [Trust Payments](https://ep.trustpayments.com/user/signup)  account is required.
 
 ## Requirements
 
@@ -15,7 +15,7 @@ This repository contains the Trust Payments WooCommerce plugin that enables WooC
 
 ## Documentation
 
-* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.7.17/docs/en/documentation.html)
+* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.7.18/docs/en/documentation.html)
 
 ## Support
 
@@ -24,4 +24,4 @@ Support queries can be issued on the [Trust Payments support site](https://www.t
 
 ## License
 
-Please see the [license file](https://github.com/TrustPayments/woocommerce/blob/1.7.17/LICENSE) for more information.
+Please see the [license file](https://github.com/TrustPayments/woocommerce/blob/1.7.18/LICENSE) for more information.
