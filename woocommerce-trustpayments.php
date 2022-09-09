@@ -1,19 +1,19 @@
 <?php
 /**
- * Plugin Name: WooCommerce Trust Payments
+ * Plugin Name: Trust Payments
  * Plugin URI: https://wordpress.org/plugins/woo-trustpayments
  * Description: Process WooCommerce payments with Trust Payments.
- * Version: 1.7.18
+ * Version: 1.7.19
  * License: Apache2
  * License URI: http://www.apache.org/licenses/LICENSE-2.0
  * Author: wallee AG
  * Author URI: https://www.wallee.com
  * Requires at least: 4.7
- * Tested up to: 5.8
+ * Tested up to: 6.0.2
  * WC requires at least: 3.0.0
- * WC tested up to: 5.4.2
+ * WC tested up to: 6.7.0
  *
- * Text Domain: woo-trustpayments
+ * Text Domain: trustpayments
  * Domain Path: /languages/
  *
  */
@@ -46,7 +46,7 @@ if (!class_exists('WooCommerce_TrustPayments')) {
 		 *
 		 * @var string
 		 */
-		private $version = '1.7.18';
+		private $version = '1.7.19';
 		
 		/**
 		 * The single instance of the class.
