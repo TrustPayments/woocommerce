@@ -124,7 +124,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 	
 	public function output_links($value){
 	    foreach($value['links'] as $url => $text){
-	        echo '<a href="'.$url.'" class="page-title-action">'.esc_html($text).'</a>';	        
+	        echo '<a href="'.esc_url($url).'" class="page-title-action">'.esc_html($text).'</a>';
 	    }
 	}
 
@@ -138,7 +138,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 		$settings = array(
 		    array(
 		        'links' => array(
-		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.7.19/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
+		            'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/1.7.20/docs/en/documentation.html' => __('Documentation', 'woo-trustpayments'),
 		            'https://ep.trustpayments.com/user/signup' => __('Sign Up', 'woo-trustpayments')
 		        ),
 		        'type' => 'trustpayments_links',

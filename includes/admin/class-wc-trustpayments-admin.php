@@ -258,7 +258,7 @@ class WC_TrustPayments_Admin {
 							<label for="trustpayments_attribute_option_send">'.esc_html__( 'Send attribute to Trust Payments.', 'woo-trustpayments' ).'</label>
 					</th>
 						<td>
-								<input name="trustpayments_attribute_option_send" id="trustpayments_attribute_option_send" type="checkbox" value="1" '.checked( $checked, true, false).'/>
+								<input name="trustpayments_attribute_option_send" id="trustpayments_attribute_option_send" type="checkbox" value="1" '.esc_attr(checked( $checked, true, false)).'/>
 								<p class="description">'.esc_html__( 'Should this product attribute be sent to Trust Payments as line item attribute?', 'woo-trustpayments' ).'</p>
 						</td>
 				</tr>';	    
