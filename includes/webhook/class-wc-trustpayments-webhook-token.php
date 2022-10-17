@@ -1,22 +1,36 @@
 <?php
-if (!defined('ABSPATH')) {
+/**
+ *
+ * WC_TrustPayments_Webhook_Token Class
+ *
+ * TrustPayments
+ * This plugin will add support for all TrustPayments payments methods and connect the TrustPayments servers to your WooCommerce webshop (https://www.trustpayments.com/).
+ *
+ * @category Class
+ * @package  TrustPayments
+ * @author   wallee AG (http://www.wallee.com/)
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
-/**
- * Trust Payments WooCommerce
- *
- * This WooCommerce plugin enables to process payments with Trust Payments (https://www.trustpayments.com/).
- *
- * @author wallee AG (http://www.wallee.com/)
- * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
- */
 /**
  * Webhook processor to handle token state transitions.
  */
 class WC_TrustPayments_Webhook_Token extends WC_TrustPayments_Webhook_Abstract {
 
-    public function process(WC_TrustPayments_Webhook_Request $request){
-        $token_service = WC_TrustPayments_Service_Token::instance();
-		$token_service->update_token($request->get_space_id(), $request->get_entity_id());
+	/**
+	 * Process.
+	 *
+	 * @param WC_TrustPayments_Webhook_Request $request request.
+	 * @return void
+	 * @throws \TrustPayments\Sdk\ApiException ApiException.
+	 * @throws \TrustPayments\Sdk\Http\ConnectionException ConnectionException.
+	 * @throws \TrustPayments\Sdk\VersioningException VersioningException.
+	 */
+	public function process( WC_TrustPayments_Webhook_Request $request ) {
+		$token_service = WC_TrustPayments_Service_Token::instance();
+		$token_service->update_token( $request->get_space_id(), $request->get_entity_id() );
 	}
 }

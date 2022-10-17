@@ -1,19 +1,29 @@
 <?php
-if (!defined('ABSPATH')) {
+/**
+ *
+ * WC_TrustPayments_Gateway Class
+ *
+ * TrustPayments
+ * This plugin will add support for all TrustPayments payments methods and connect the TrustPayments servers to your WooCommerce webshop (https://www.trustpayments.com/).
+ *
+ * @category Class
+ * @package  TrustPayments
+ * @author   wallee AG (http://www.wallee.com/)
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 /**
- * Trust Payments WooCommerce
+ * Class WC_TrustPayments_Gateway.
  *
- * This WooCommerce plugin enables to process payments with Trust Payments (https://www.trustpayments.com/).
- *
- * @author wallee AG (http://www.wallee.com/)
- * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
+ * @class WC_TrustPayments_Gateway
  */
 /**
  * This class handles the database setup and migration.
  */
 class WC_TrustPayments_Integration {
-    const LIGHTBOX = 'lightbox';
-    const IFRAME = 'iframe';
+	const LIGHTBOX = 'lightbox';
+	const IFRAME = 'iframe';
 }

@@ -1,39 +1,69 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit();
-}
 /**
- * Trust Payments WooCommerce
  *
- * This WooCommerce plugin enables to process payments with Trust Payments (https://www.trustpayments.com/).
+ * WC_TrustPayments_Exception_Invalid_Transaction_Amount Class
  *
- * @author wallee AG (http://www.wallee.com/)
- * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
+ * TrustPayments
+ * This plugin will add support for all TrustPayments payments methods and connect the TrustPayments servers to your WooCommerce webshop (https://www.trustpayments.com/).
+ *
+ * @category Class
+ * @package  TrustPayments
+ * @author   wallee AG (http://www.wallee.com/)
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 /**
  * This exception indicating an error with the transaction amount
- *
- * @author Nico Eigenmann
  */
-class WC_TrustPayments_Exception_Invalid_Transaction_Amount extends Exception
-{
+class WC_TrustPayments_Exception_Invalid_Transaction_Amount extends Exception {
 
-    private $item_total;
-    private $order_total;
-    
-    public function __construct ($item_total, $order_total) {
-        parent::__construct("The item total '".$item_total."' does not match the order total '".$order_total."'.");
-        $this->item_total = $item_total;
-        $this->order_total = $order_total;
-    }
 
-    public function get_item_total(){
-        return $this->item_total;
-    }
-    
-    public function get_order_total(){
-        return $this->order_total;
-    }
-    
+	/**
+	 * Item total.
+	 *
+	 * @var mixed $item_total item total.
+	 */
+	private $item_total;
+
+	/**
+	 * Order total.
+	 *
+	 * @var mixed $order_total order total.
+	 */
+	private $order_total;
+
+	/**
+	 * Construct.
+	 *
+	 * @param mixed $item_total item total.
+	 * @param mixed $order_total order total.
+	 */
+	public function __construct( $item_total, $order_total ) {
+		parent::__construct( "The item total '" . $item_total . "' does not match the order total '" . $order_total . "'." );
+		$this->item_total = $item_total;
+		$this->order_total = $order_total;
+	}
+
+	/**
+	 * Get item total.
+	 *
+	 * @return mixed
+	 */
+	public function get_item_total() {
+		return $this->item_total;
+	}
+
+	/**
+	 * Get order total.
+	 *
+	 * @return mixed
+	 */
+	public function get_order_total() {
+		return $this->order_total;
+	}
+
 }

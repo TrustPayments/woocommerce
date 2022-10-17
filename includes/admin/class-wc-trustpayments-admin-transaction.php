@@ -1,127 +1,154 @@
 <?php
-if (!defined('ABSPATH')) {
+/**
+ *
+ * WC_TrustPayments_Admin_Transaction Class
+ *
+ * TrustPayments
+ * This plugin will add support for all TrustPayments payments methods and connect the TrustPayments servers to your WooCommerce webshop (https://www.trustpayments.com/).
+ *
+ * @category Class
+ * @package  TrustPayments
+ * @author   wallee AG (http://www.wallee.com/)
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 /**
- * Trust Payments WooCommerce
+ * Class WC_TrustPayments_Admin_Transaction.
  *
- * This WooCommerce plugin enables to process payments with Trust Payments (https://www.trustpayments.com/).
- *
- * @author wallee AG (http://www.wallee.com/)
- * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License (ASL 2.0)
+ * @class WC_TrustPayments_Admin_Transaction
  */
 /**
  * WC TrustPayments Admin Transaction class
  */
 class WC_TrustPayments_Admin_Transaction {
 
-	public static function init(){
-		add_action('add_meta_boxes', array(
-			__CLASS__,
-			'add_meta_box' 
-		), 40);
+	/**
+	 * Init
+	 */
+	public static function init() {
+		add_action(
+			'add_meta_boxes',
+			array(
+				__CLASS__,
+				'add_meta_box',
+			),
+			40
+		);
 	}
 
 	/**
 	 * Add WC Meta boxes.
 	 */
-	public static function add_meta_box(){
+	public static function add_meta_box() {
 		global $post;
-		if ($post->post_type != 'shop_order') {
+		if ( 'shop_order' != $post->post_type ) {
 			return;
 		}
-		$order = WC_Order_Factory::get_order($post->ID);
-		$method = wc_get_payment_gateway_by_order($order);
-		if (!($method instanceof WC_TrustPayments_Gateway)) {
+		$order  = WC_Order_Factory::get_order( $post->ID );
+		$method = wc_get_payment_gateway_by_order( $order );
+		if ( ! ( $method instanceof WC_TrustPayments_Gateway ) ) {
 			return;
 		}
-		$transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_by_order_id($order->get_id());
-		if ($transaction_info->get_id() == null) {
-		    $transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_newest_by_mapped_order_id($order->get_id());
+		$transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_by_order_id( $order->get_id() );
+		if ( $transaction_info->get_id() == null ) {
+			$transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_newest_by_mapped_order_id( $order->get_id() );
 		}
-		if ($transaction_info->get_id() != null) {
-			add_meta_box('woocommerce-order-trustpayments-transaction', __('Trust Payments Transaction', 'woocommerc-trustpayments'), 
-					array(
-						__CLASS__,
-						'output' 
-					), 'shop_order', 'normal', 'default');
+		if ( $transaction_info->get_id() != null ) {
+			add_meta_box(
+				'woocommerce-order-trustpayments-transaction',
+				__( 'Trust Payments Transaction', 'woocommerc-trustpayments' ),
+				array(
+					__CLASS__,
+					'output',
+				),
+				'shop_order',
+				'normal',
+				'default'
+			);
 		}
 	}
 
 	/**
 	 * Output the metabox.
 	 *
-	 * @param WP_Post $post
+	 * @param WP_Post $post post data.
 	 */
-	public static function output($post){
+	public static function output( $post ) {
 		global $post;
-		
-		$order = WC_Order_Factory::get_order($post->ID);
-		$method = wc_get_payment_gateway_by_order($order);
-		if (!($method instanceof WC_TrustPayments_Gateway)) {
+
+		$order  = WC_Order_Factory::get_order( $post->ID );
+		$method = wc_get_payment_gateway_by_order( $order );
+		if ( ! ( $method instanceof WC_TrustPayments_Gateway ) ) {
 			return;
 		}
 		$helper = WC_TrustPayments_Helper::instance();
-		
-		$transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_by_order_id($order->get_id());
-		if ($transaction_info->get_id() == null) {
-		    $transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_newest_by_mapped_order_id($order->get_id());
-		    if ($transaction_info->get_id() == null) {
-			 return;
-		    }
+
+		$transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_by_order_id( $order->get_id() );
+		if ( $transaction_info->get_id() == null ) {
+			$transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_newest_by_mapped_order_id( $order->get_id() );
+			if ( $transaction_info->get_id() == null ) {
+				return;
+			}
 		}
-		$labels_by_group = self::get_grouped_charge_attempt_labels($transaction_info);
+		$labels_by_group = self::get_grouped_charge_attempt_labels( $transaction_info );
 		?>
 <div class="order-trustpayments-transaction-metabox wc-metaboxes-wrapper">
 	<div class="trustpayments-transaction-data-column-container">
 		<div class="trustpayments-transaction-column">
 			<p>
-				<strong><?php _e('General Details', 'woo-trustpayments'); ?></strong>
+				<strong><?php esc_html_e( 'General Details', 'woo-trustpayments' ); ?></strong>
 			</p>
 			<table class="form-list" style="margin-bottom: 20px;">
 				<tbody>
 					<tr>
-						<td class="label"><label><?php _e('Payment Method', 'woo-trustpayments') ?></label></td>
-						<td class="value"><strong><?php echo esc_html($method->get_payment_method_configuration()->get_configuration_name()) ?></strong>
+						<td class="label"><label><?php echo esc_html__( 'Payment Method', 'woo-trustpayments' ); ?></label></td>
+						<td class="value"><strong><?php echo esc_html( $method->get_payment_method_configuration()->get_configuration_name() ); ?></strong>
 						</td>
 					</tr>
-			<?php if (!empty($transaction_info->get_image())) :?>
+			<?php if ( ! empty( $transaction_info->get_image() ) ) : ?>
 				 <tr>
 						<td class="label"></td>
 						<td class="value"><img
-							src="<?php echo esc_url($helper->get_resource_url($transaction_info->get_image_base(), $transaction_info->get_image(), $transaction_info->get_language(), $transaction_info->get_space_id(), $transaction_info->get_space_view_id())) ?>"
+							src="<?php echo esc_url( $helper->get_resource_url( $transaction_info->get_image_base(), $transaction_info->get_image(), $transaction_info->get_language(), $transaction_info->get_space_id(), $transaction_info->get_space_view_id() ) ); ?>"
 							width="50" /><br /></td>
 					</tr>
 			<?php endif; ?>
-    			<tr>
-						<td class="label"><label><?php  _e('Transaction State', 'woo-trustpayments') ?></label></td>
-						<td class="value"><strong><?php echo esc_html(self::get_transaction_state($transaction_info));?></strong></td>
+				<tr>
+						<td class="label"><label><?php esc_html_e( 'Transaction State', 'woo-trustpayments' ); ?></label></td>
+        		    <?php // phpcs:ignore ?>
+                    <td class="value"><strong><?php esc_html_e( self::get_transaction_state( $transaction_info ) ); ?></strong></td>
 					</tr>
 
-		    <?php if ($transaction_info->get_order_id() != null):?>
-                <tr>
-                    <td class="label"><label><?php _e('Merchant Reference', 'woo-trustpayments') ?></label></td>
-                    <td class="value"><strong><?php echo esc_html($transaction_info->get_order_id())?></strong></td>
-                </tr>
-		    <?php endif; ?>
+			<?php if ( $transaction_info->get_order_id() != null ) : ?>
+				<tr>
+					<td class="label"><label><?php esc_html_e( 'Merchant Reference', 'woo-trustpayments' ); ?></label></td>
+        		    <?php // phpcs:ignore ?>
+                    <td class="value"><strong><?php esc_html_e( $transaction_info->get_order_id() ); ?></strong></td>
+				</tr>
+			<?php endif; ?>
 			
-            <?php if ($transaction_info->get_failure_reason() != null):?>
-            	<tr>
-						<td class="label"><label><?php _e('Failure Reason', 'woo-trustpayments') ?></label></td>
-						<td class="value"><strong><?php echo esc_html($transaction_info->get_failure_reason())?></strong></td>
+			<?php if ( $transaction_info->get_failure_reason() != null ) : ?>
+				<tr>
+						<td class="label"><label><?php esc_html_e( 'Failure Reason', 'woo-trustpayments' ); ?></label></td>
+            		    <?php // phpcs:ignore ?>
+                        <td class="value"><strong><?php esc_html_e( $transaction_info->get_failure_reason() ); ?></strong></td>
 					</tr>
-            <?php endif; ?>
-            	<tr>
-						<td class="label"><label><?php _e('Authorization Amount', 'woo-trustpayments') ?></label></td>
-						<td class="value"><strong><?php echo  wc_price( $transaction_info->get_authorization_amount(), array( 'currency' => $transaction_info->get_currency()) )?></strong></td>
+			<?php endif; ?>
+				<tr>
+						<td class="label"><label><?php esc_html_e( 'Authorization Amount', 'woo-trustpayments' ); ?></label></td>
+						<?php // phpcs:ignore ?>
+						<td class="value"><strong><?php echo wc_price( $transaction_info->get_authorization_amount(), array( 'currency' => $transaction_info->get_currency() ) ); ?></strong></td>
 					</tr>
 					<tr>
-						<td class="label"><label><?php _e('Transaction', 'woo-trustpayments') ?></label></td>
+						<td class="label"><label><?php esc_html_e( 'Transaction', 'woo-trustpayments' ); ?></label></td>
 						<td class="value"><strong> <a
-								href="<?php echo esc_url(self::get_transaction_url($transaction_info)) ?>"
+								href="<?php echo esc_url( self::get_transaction_url( $transaction_info ) ); ?>"
 								target="_blank">
-    					<?php _e('View in Trust Payments', 'woo-trustpayments') ?>
-    				</a>
+						<?php esc_html_e( 'View in Trust Payments', 'woo-trustpayments' ); ?>
+					</a>
 						</strong></td>
 					</tr>
 
@@ -130,115 +157,123 @@ class WC_TrustPayments_Admin_Transaction {
 		</div>
 		
 
-<?php if (!empty($labels_by_group)) : ?>
-	<?php foreach ($labels_by_group as $group) : ?>
+		<?php if ( ! empty( $labels_by_group ) ) : ?>
+			<?php foreach ( $labels_by_group as $group ) : ?>
 	<div class="trustpayments-transaction-column">
 			<div class="trustpayments-payment-label-container"
-				id="trustpayments-payment-label-container-<?php echo esc_attr($group['group']->getId()) ?>">
+				id="trustpayments-payment-label-container-<?php echo esc_attr( $group['group']->getId() ); ?>">
 				<p class="trustpayments-payment-label-group">
-					<strong><?php echo esc_html($helper->translate($group['group']->getName())) ?></strong>
+					<strong><?php echo esc_html( $helper->translate( $group['group']->getName() ) ); ?></strong>
 				</p>
 				<table class="form-list" style="margin-bottom: 20px;">
 					<tbody>
-        			<?php foreach ($group['labels'] as $label) : ?>
-                		<tr>
-							<td class="label"><label><?php echo esc_html($helper->translate($label['descriptor']->getName())) ?></label></td>
-							<td class="value"><strong><?php echo esc_html($label['value']) ?></strong></td>
+					<?php foreach ( $group['labels'] as $label ) : ?>
+						<tr>
+							<td class="label"><label><?php echo esc_html( $helper->translate( $label['descriptor']->getName() ) ); ?></label></td>
+							<td class="value"><strong><?php echo esc_html( $label['value'] ); ?></strong></td>
 						</tr>
-    		    	<?php endforeach; ?>
-    	    	</tbody>
+					<?php endforeach; ?>
+				</tbody>
 				</table>
 			</div>
 		</div>
 		
 	<?php endforeach; ?>
-<?php endif; ?>
+		<?php endif; ?>
 	</div>
 </div>
-<?php
+		<?php
 	}
 
 	/**
 	 * Returns the translated name of the transaction's state.
 	 *
+	 * @param WC_TrustPayments_Entity_Transaction_Info $transaction_info transaction info.
 	 * @return string
 	 */
-	protected static function get_transaction_state(WC_TrustPayments_Entity_Transaction_Info $transaction_info){
-		switch ($transaction_info->get_state()) {
-		    case \TrustPayments\Sdk\Model\TransactionState::AUTHORIZED:
-				return __('Authorized', 'woo-trustpayments');
-		    case \TrustPayments\Sdk\Model\TransactionState::COMPLETED:
-				return __('Completed', 'woo-trustpayments');
-		    case \TrustPayments\Sdk\Model\TransactionState::CONFIRMED:
-				return __('Confirmed', 'woo-trustpayments');
-		    case \TrustPayments\Sdk\Model\TransactionState::DECLINE:
-				return __('Decline', 'woo-trustpayments');
-		    case \TrustPayments\Sdk\Model\TransactionState::FAILED:
-				return __('Failed', 'woo-trustpayments');
-		    case \TrustPayments\Sdk\Model\TransactionState::FULFILL:
-				return __('Fulfill', 'woo-trustpayments');
+	protected static function get_transaction_state( WC_TrustPayments_Entity_Transaction_Info $transaction_info ) {
+		switch ( $transaction_info->get_state() ) {
+			case \TrustPayments\Sdk\Model\TransactionState::AUTHORIZED:
+				return __( 'Authorized', 'woo-trustpayments' );
+			case \TrustPayments\Sdk\Model\TransactionState::COMPLETED:
+				return __( 'Completed', 'woo-trustpayments' );
+			case \TrustPayments\Sdk\Model\TransactionState::CONFIRMED:
+				return __( 'Confirmed', 'woo-trustpayments' );
+			case \TrustPayments\Sdk\Model\TransactionState::DECLINE:
+				return __( 'Decline', 'woo-trustpayments' );
+			case \TrustPayments\Sdk\Model\TransactionState::FAILED:
+				return __( 'Failed', 'woo-trustpayments' );
+			case \TrustPayments\Sdk\Model\TransactionState::FULFILL:
+				return __( 'Fulfill', 'woo-trustpayments' );
 			case \TrustPayments\Sdk\Model\TransactionState::PENDING:
-				return __('Pending', 'woo-trustpayments');
+				return __( 'Pending', 'woo-trustpayments' );
 			case \TrustPayments\Sdk\Model\TransactionState::PROCESSING:
-				return __('Processing', 'woo-trustpayments');
+				return __( 'Processing', 'woo-trustpayments' );
 			case \TrustPayments\Sdk\Model\TransactionState::VOIDED:
-				return __('Voided', 'woo-trustpayments');
+				return __( 'Voided', 'woo-trustpayments' );
 			default:
-				return __('Unknown State', 'woo-trustpayments');
+				return __( 'Unknown State', 'woo-trustpayments' );
 		}
 	}
 
 	/**
 	 * Returns the URL to the transaction detail view in TrustPayments.
 	 *
+	 * @param WC_TrustPayments_Entity_Transaction_Info $info info.
 	 * @return string
 	 */
-	protected static function get_transaction_url(WC_TrustPayments_Entity_Transaction_Info $info){
-	    return WC_TrustPayments_Helper::instance()->get_base_gateway_url() . 's/' . $info->get_space_id() . '/payment/transaction/view/' .
+	protected static function get_transaction_url( WC_TrustPayments_Entity_Transaction_Info $info ) {
+		return WC_TrustPayments_Helper::instance()->get_base_gateway_url() . 's/' . $info->get_space_id() . '/payment/transaction/view/' .
 				 $info->get_transaction_id();
 	}
 
 	/**
 	 * Returns the charge attempt's labels by their groups.
 	 *
+	 * @param WC_TrustPayments_Entity_Transaction_Info $info info.
 	 * @return \TrustPayments\Sdk\Model\Label[]
 	 */
-	protected static function get_grouped_charge_attempt_labels(WC_TrustPayments_Entity_Transaction_Info $info){
+	protected static function get_grouped_charge_attempt_labels( WC_TrustPayments_Entity_Transaction_Info $info ) {
 		try {
-		    $label_description_provider = WC_TrustPayments_Provider_Label_Description::instance();
-		    $label_description_group_provider = WC_TrustPayments_Provider_Label_Description_Group::instance();
-			
+			$label_description_provider       = WC_TrustPayments_Provider_Label_Description::instance();
+			$label_description_group_provider = WC_TrustPayments_Provider_Label_Description_Group::instance();
+
 			$labels_by_group_id = array();
-			foreach ($info->get_labels() as $descriptor_id => $value) {
-				$descriptor = $label_description_provider->find($descriptor_id);
-				if ($descriptor && $descriptor->getCategory() == \TrustPayments\Sdk\Model\LabelDescriptorCategory::HUMAN) {
-					$labels_by_group_id[$descriptor->getGroup()][] = array(
+			foreach ( $info->get_labels() as $descriptor_id => $value ) {
+				$descriptor = $label_description_provider->find( $descriptor_id );
+				if ( $descriptor && $descriptor->getCategory() == \TrustPayments\Sdk\Model\LabelDescriptorCategory::HUMAN ) {
+					$labels_by_group_id[ $descriptor->getGroup() ][] = array(
 						'descriptor' => $descriptor,
-						'value' => $value 
+						'value'      => $value,
 					);
 				}
 			}
-			
+
 			$labels_by_group = array();
-			foreach ($labels_by_group_id as $group_id => $labels) {
-				$group = $label_description_group_provider->find($group_id);
-				if ($group) {
-					usort($labels, function ($a, $b){
-						return $a['descriptor']->getWeight() - $b['descriptor']->getWeight();
-					});
+			foreach ( $labels_by_group_id as $group_id => $labels ) {
+				$group = $label_description_group_provider->find( $group_id );
+				if ( $group ) {
+					usort(
+						$labels,
+						function ( $a, $b ) {
+							return $a['descriptor']->getWeight() - $b['descriptor']->getWeight();
+						}
+					);
 					$labels_by_group[] = array(
-						'group' => $group,
-						'labels' => $labels 
+						'group'  => $group,
+						'labels' => $labels,
 					);
 				}
 			}
-			usort($labels_by_group, function ($a, $b){
-				return $a['group']->getWeight() - $b['group']->getWeight();
-			});
-			
+			usort(
+				$labels_by_group,
+				function ( $a, $b ) {
+					return $a['group']->getWeight() - $b['group']->getWeight();
+				}
+			);
+
 			return $labels_by_group;
-		}
-		catch (Exception $e) {
+		} catch ( Exception $e ) {
 			return array();
 		}
 	}
