@@ -187,7 +187,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 		$settings = array(
 			array(
 				'links' => array(
-					'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.0.5/docs/en/documentation.html' => __( 'Documentation', 'woo-trustpayments' ),
+					'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.0.6/docs/en/documentation.html' => __( 'Documentation', 'woo-trustpayments' ),
 					'https://ep.trustpayments.com/user/signup' => __( 'Sign Up', 'woo-trustpayments' ),
 				),
 				'type'  => 'trustpayments_links',
@@ -315,8 +315,8 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 				'css'      => 'min-width:300px;',
 				'default'  => WC_TrustPayments_Integration::IFRAME,
 				'options'  => array(
-					WC_Wallee_Integration::IFRAME => $this->format_display_string( __( 'iframe', 'woo-wallee' ) ),
-					WC_Wallee_Integration::LIGHTBOX  => $this->format_display_string( __( 'lightbox', 'woo-wallee' ) ),
+				    WC_TrustPayments_Integration::IFRAME => $this->format_display_string( __( 'iframe', 'woo-trustpayments' ) ),
+				    WC_TrustPayments_Integration::LIGHTBOX  => $this->format_display_string( __( 'lightbox', 'woo-trustpayments' ) ),
 				),
 			),
 
@@ -359,8 +359,8 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 				'css'      => 'min-width:300px;',
 				'default'  => WC_TrustPayments_Order_Reference::ORDER_ID,
 				'options'  => array(
-					WC_Wallee_Order_Reference::ORDER_ID => $this->format_display_string( __( 'order_id', 'woo-wallee' ) ),
-					WC_Wallee_Order_Reference::ORDER_NUMBER  => $this->format_display_string( __( 'order_number', 'woo-wallee' ) ),
+				    WC_TrustPayments_Order_Reference::ORDER_ID => $this->format_display_string( __( 'order_id', 'woo-trustpayments' ) ),
+				    WC_TrustPayments_Order_Reference::ORDER_NUMBER  => $this->format_display_string( __( 'order_number', 'woo-trustpayments' ) ),
 				),
 			),
 
