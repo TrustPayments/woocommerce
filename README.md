@@ -15,7 +15,7 @@ This repository contains the Trust Payments plugin that enables WooCommerce to p
 
 ## Documentation
 
-* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.0.7/docs/en/documentation.html)
+* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.0.8/docs/en/documentation.html)
 
 ## Support
 
@@ -24,4 +24,4 @@ Support queries can be issued on the [Trust Payments support site](https://www.t
 
 ## License
 
-Please see the [license file](https://github.com/TrustPayments/woocommerce/blob/2.0.7/LICENSE) for more information.
+Please see the [license file](https://github.com/TrustPayments/woocommerce/blob/2.0.8/LICENSE) for more information.

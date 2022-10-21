@@ -248,7 +248,7 @@ class WC_TrustPayments_Migration {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( WC_TRUSTPAYMENTS_PLUGIN_BASENAME === $file ) {
 			$row_meta = array(
-				'docs' => '<a href="https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.0.7/docs/en/documentation.html" aria-label="' . esc_attr__( 'View Documentation', 'woo-trustpayments' ) . '">' . esc_html__( 'Documentation', 'woo-trustpayments' ) . '</a>',
+				'docs' => '<a href="https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.0.8/docs/en/documentation.html" aria-label="' . esc_attr__( 'View Documentation', 'woo-trustpayments' ) . '">' . esc_html__( 'Documentation', 'woo-trustpayments' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );
