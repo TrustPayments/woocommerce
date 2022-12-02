@@ -3,7 +3,7 @@ Contributors: customwebgmbh
 Tags: woocommerce Trust Payments, woocommerce, Trust Payments, payment, e-commerce, webshop, psp, invoice, packing slips, pdf, customer invoice, processing
 Requires at least: 4.7
 Tested up to: 6.1
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: Apache 2
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -23,7 +23,7 @@ To use this extension, a Trust Payments account is required. Sign up on [Trust P
 
 == Documentation ==
 
-Additional documentation for this plugin is available [here](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.2/docs/en/documentation.html).
+Additional documentation for this plugin is available [here](https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.3/docs/en/documentation.html).
 
 == Support ==
 
@@ -57,7 +57,7 @@ Support queries can be issued on the [Trust Payments support site](https://www.t
 
  
 ## Features:
-- Added analytics headers.
+- Compatibility improvement.
 - Support of Wordpress 6.1.1
 - Support of Woocommerce 7.1.0
 
