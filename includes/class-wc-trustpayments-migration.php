@@ -140,7 +140,7 @@ class WC_TrustPayments_Migration {
 		}
 
 		if ( ! empty( $errors ) ) {
-			$title = __( 'Could not activate plugin WooCommerce Trust Payments.', 'woo-trustpayments' );
+			$title = __( 'Could not activate plugin Trust Payments.', 'woo-trustpayments' );
 			    // phpcs:ignore
 			    $message = '<h1><strong>' . esc_html_e( $title ) . '</strong></h1><br/>' .
 					'<h3>' . __( 'Please check the following requirements before activating:', 'woo-trustpayments' ) . '</h3>' .
@@ -248,7 +248,7 @@ class WC_TrustPayments_Migration {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( WC_TRUSTPAYMENTS_PLUGIN_BASENAME === $file ) {
 			$row_meta = array(
-				'docs' => '<a href="https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.6/docs/en/documentation.html" aria-label="' . esc_attr__( 'View Documentation', 'woo-trustpayments' ) . '">' . esc_html__( 'Documentation', 'woo-trustpayments' ) . '</a>',
+				'docs' => '<a href="https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.7/docs/en/documentation.html" aria-label="' . esc_attr__( 'View Documentation', 'woo-trustpayments' ) . '">' . esc_html__( 'Documentation', 'woo-trustpayments' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );

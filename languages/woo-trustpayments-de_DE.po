@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Trust Payments\n"
+"Project-Id-Version: Trust Payments\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-30 16:16+0100\n"
 "PO-Revision-Date: 2021-11-30 16:16+0100\n"
@@ -45,8 +45,8 @@ msgid "Woocommerce %s+ is required. (You're running version %s)"
 msgstr "Woocommerce %s+ wird benötigt. (Du verwendest Version %s)"
 
 #: includes/class-wc-trustpayments-migration.php:116
-msgid "Could not activate plugin WooCommerce Trust Payments."
-msgstr "Das Plugin WooCommerce Trust Payments konnte nicht aktiviert werden."
+msgid "Could not activate plugin Trust Payments."
+msgstr "Das Plugin Trust Payments konnte nicht aktiviert werden."
 
 #: includes/class-wc-trustpayments-migration.php:118
 msgid "Please check the following requirements before activating:"
@@ -536,21 +536,21 @@ msgstr ""
 
 #: views/admin-notices/migration-failed.php:15
 msgid ""
-"There was an issue executing the migration for WooCommerce Trust Payments."
+"There was an issue executing the migration for Trust Payments."
 msgstr ""
-"Es gab ein Problem bei der Ausführung der Migration für WooCommerce "
+"Es gab ein Problem bei der Ausführung der Migration für "
 "Trust Payments."
 
 #: views/admin-notices/plugin-deactivated.php:14
 msgid ""
-"WooCommerce Trust Payments deactivated because it depends on WooCommerce."
+"Trust Payments deactivated because it depends on WooCommerce."
 msgstr ""
-"WooCommerce Trust Payments wurde deaktiviert, weil es von WooCommerce "
+"Trust Payments wurde deaktiviert, weil es von WooCommerce "
 "abhängig ist."
 
 #. Name of the plugin
-msgid "WooCommerce Trust Payments"
-msgstr "WooCommerce Trust Payments"
+msgid "Trust Payments"
+msgstr "Trust Payments"
 
 #. Description of the plugin
 msgid "Process WooCommerce payments with Trust Payments."

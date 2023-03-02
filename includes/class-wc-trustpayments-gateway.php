@@ -420,6 +420,7 @@ class WC_TrustPayments_Gateway extends WC_Payment_Gateway {
 					WooCommerce_TrustPayments::instance()->plugin_url() . '/assets/js/frontend/checkout.js',
 					array(
 						'jquery',
+						'jquery-blockui',
 						'trustpayments-remote-checkout-js',
 					),
 					1,

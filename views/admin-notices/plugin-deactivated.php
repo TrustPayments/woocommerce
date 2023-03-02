@@ -14,4 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 ?>
-<div class="error notice notice-error"><p><?php esc_html_e( 'WooCommerce Trust Payments deactivated because it depends on WooCommerce.', 'woo-trustpayments' ); ?></p></div>
+<div class="error notice notice-error"><p><?php esc_html_e( 'Trust Payments deactivated because it depends on WooCommerce.', 'woo-trustpayments' ); ?></p></div>

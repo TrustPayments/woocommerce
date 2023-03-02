@@ -105,9 +105,9 @@ class WC_TrustPayments_Webhook_Transaction_Completion extends WC_TrustPayments_W
 		$completion_job->set_state( WC_TrustPayments_Entity_Completion_Job::STATE_DONE );
 
 		if ( $completion_job->get_restock() ) {
-			$this->restock_non_completed_items( $completion_job->get_items(), $order );
+			$this->restock_non_completed_items( (array) $completion_job->get_items(), $order );
 		}
-		$this->adapt_order_items( $completion_job->get_items(), $order );
+		$this->adapt_order_items( (array) $completion_job->get_items(), $order );
 		$completion_job->save();
 	}
 

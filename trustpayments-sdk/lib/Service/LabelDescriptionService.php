@@ -84,7 +84,8 @@ class LabelDescriptionService {
 	 * Operation allWithHttpInfo
 	 *
 	 * All
-	 *
+     
+     *
 	 * @throws \TrustPayments\Sdk\ApiException
 	 * @throws \TrustPayments\Sdk\VersioningException
 	 * @throws \TrustPayments\Sdk\Http\ConnectionException
@@ -119,7 +120,6 @@ class LabelDescriptionService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -128,7 +128,7 @@ class LabelDescriptionService {
 				$headerParams,
 				'\TrustPayments\Sdk\Model\LabelDescriptor[]',
 				'/label-description-service/all'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\TrustPayments\Sdk\Model\LabelDescriptor[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -180,7 +180,8 @@ class LabelDescriptionService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-	 *
+     
+     *
 	 * @param int $id The id of the label descriptor which should be returned. (required)
 	 * @throws \TrustPayments\Sdk\ApiException
 	 * @throws \TrustPayments\Sdk\VersioningException
@@ -223,7 +224,6 @@ class LabelDescriptionService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -232,7 +232,7 @@ class LabelDescriptionService {
 				$headerParams,
 				'\TrustPayments\Sdk\Model\LabelDescriptor',
 				'/label-description-service/read'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\TrustPayments\Sdk\Model\LabelDescriptor', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

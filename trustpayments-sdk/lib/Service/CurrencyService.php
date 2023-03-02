@@ -84,7 +84,8 @@ class CurrencyService {
 	 * Operation allWithHttpInfo
 	 *
 	 * All
-	 *
+     
+     *
 	 * @throws \TrustPayments\Sdk\ApiException
 	 * @throws \TrustPayments\Sdk\VersioningException
 	 * @throws \TrustPayments\Sdk\Http\ConnectionException
@@ -119,7 +120,6 @@ class CurrencyService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -128,7 +128,7 @@ class CurrencyService {
 				$headerParams,
 				'\TrustPayments\Sdk\Model\RestCurrency[]',
 				'/currency/all'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\TrustPayments\Sdk\Model\RestCurrency[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
