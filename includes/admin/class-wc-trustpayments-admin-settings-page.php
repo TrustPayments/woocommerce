@@ -187,7 +187,7 @@ class WC_TrustPayments_Admin_Settings_Page extends WC_Settings_Page {
 		$settings = array(
 			array(
 				'links' => array(
-					'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.8/docs/en/documentation.html' => __( 'Documentation', 'woo-trustpayments' ),
+					'https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.9/docs/en/documentation.html' => __( 'Documentation', 'woo-trustpayments' ),
 					'https://ep.trustpayments.com/user/signup' => __( 'Sign Up', 'woo-trustpayments' ),
 				),
 				'type'  => 'trustpayments_links',
