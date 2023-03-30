@@ -131,6 +131,9 @@ class WC_TrustPayments_Migration {
 			if ( version_compare( $woocommerce_data['Version'], WC_TRUSTPAYMENTS_REQUIRED_WC_VERSION, '<' ) ) {
 				$errors[] = sprintf( __( "Woocommerce %1\$s+ is required. (You're running version %2\$s)", 'woo-trustpayments' ), WC_TRUSTPAYMENTS_REQUIRED_WC_VERSION, $woocommerce_data['Version'] );
 			}
+			if ( version_compare( $woocommerce_data['Version'], WC_TRUSTPAYMENTS_REQUIRED_WC_MAXIMUM_VERSION, '>' ) ) {
+				$errors[] = sprintf( __( "Woocommerce version supported up to %1\$s+. (You're running version %2\$s)", 'woo-trustpayments' ), WC_TRUSTPAYMENTS_REQUIRED_WC_MAXIMUM_VERSION, $woocommerce_data['Version'] );
+			}
 		}
 
 		try {
@@ -248,7 +251,7 @@ class WC_TrustPayments_Migration {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( WC_TRUSTPAYMENTS_PLUGIN_BASENAME === $file ) {
 			$row_meta = array(
-				'docs' => '<a href="https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.9/docs/en/documentation.html" aria-label="' . esc_attr__( 'View Documentation', 'woo-trustpayments' ) . '">' . esc_html__( 'Documentation', 'woo-trustpayments' ) . '</a>',
+				'docs' => '<a href="https://plugin-documentation.ep.trustpayments.com/TrustPayments/woocommerce/2.1.10/docs/en/documentation.html" aria-label="' . esc_attr__( 'View Documentation', 'woo-trustpayments' ) . '">' . esc_html__( 'Documentation', 'woo-trustpayments' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );
