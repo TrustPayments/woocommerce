@@ -401,12 +401,9 @@ class WC_TrustPayments_Gateway extends WC_Payment_Gateway {
 				$transaction = $transaction_service->get_transaction_from_session();
 			}
 			if ( ! wp_script_is( 'trustpayments-remote-checkout-js', 'enqueued' ) ) {
-				$ajax_url = '';
-				if ( get_option( WooCommerce_TrustPayments::CK_INTEGRATION ) == WC_TrustPayments_Integration::LIGHTBOX
-                    || version_compare( $woocommerce_data['Version'], WooCommerce_TrustPayments::WC_MAXIMUM_VERSION, '>' ) ) {
+				$ajax_url = $transaction_service->get_javascript_url_for_transaction( $transaction );
+				if ( get_option( WooCommerce_TrustPayments::CK_INTEGRATION ) == WC_TrustPayments_Integration::LIGHTBOX ) {
 					$ajax_url = $transaction_service->get_lightbox_url_for_transaction( $transaction );
-				} else {
-					$ajax_url = $transaction_service->get_javascript_url_for_transaction( $transaction );
 				}
 				wp_enqueue_script(
 					'trustpayments-remote-checkout-js',
@@ -428,15 +425,18 @@ class WC_TrustPayments_Gateway extends WC_Payment_Gateway {
 					1,
 					true
 				);
+				global $wp_version;
 				$localize = array(
 					'i18n_not_complete' => __( 'Please fill out all required fields.', 'woo-trustpayments' ),
 					'integration' => get_option( WooCommerce_TrustPayments::CK_INTEGRATION ),
+					'versions' => [
+						'wordpress' => $wp_version,
+						'woocommerce' => $woocommerce_data['Version'],
+						'trustpayments' => WC_TRUSTPAYMENTS_VERSION,
+					]
 				);
-				if ( version_compare( $woocommerce_data['Version'], WooCommerce_TrustPayments::WC_MAXIMUM_VERSION, '>' ) ) {
-					$localize['integration'] = get_option( WC_TrustPayments_Integration::LIGHTBOX );
-				}
 				wp_localize_script( 'trustpayments-checkout-js', 'trustpayments_js_params', $localize );
-				wp_add_inline_script( 'trustpayments-checkout-js', 'window.onload = function () {  wc_trustpayments_checkout.init(); };' );
+				//wp_add_inline_script( 'trustpayments-checkout-js', 'jQuery(document).ready (function (){ wc_trustpayments_checkout.init(); });' );
 
 			}
 			$transaction_nonce = hash_hmac( 'sha256', $transaction->getLinkedSpaceId() . '-' . $transaction->getId(), NONCE_KEY );
@@ -539,15 +539,14 @@ class WC_TrustPayments_Gateway extends WC_Payment_Gateway {
 			WC()->session->set( 'trustpayments_space_id', null );
 			WC()->session->set( 'trustpayments_transaction_id', null );
 
+			//now is mandatory to send the redirect property in the json response
+			$gateway = wc_get_payment_gateway_by_order( $order );
+			$url = apply_filters( 'wc_trustpayments_success_url', $gateway->get_return_url( $order ), $order );
 			$result = array(
 				'result' => 'success',
 				'trustpayments' => 'true',
+				'redirect' => $url
 			);
-
-			$woocommerce_data = get_plugin_data( WP_PLUGIN_DIR . '/woocommerce/woocommerce.php', false, false );
-			if ( version_compare( $woocommerce_data['Version'], WooCommerce_TrustPayments::WC_MAXIMUM_VERSION, '>' ) ) {
-				$result['redirect'] = $transaction_service->get_payment_page_url( $transaction->getLinkedSpaceId(), $transaction->getId() );
-			}
 
 			if ( $no_iframe ) {
 				$result = array(
