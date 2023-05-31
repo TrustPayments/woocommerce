@@ -3,7 +3,7 @@
  * Plugin Name: Trust Payments
  * Plugin URI: https://wordpress.org/plugins/woo-trustpayments
  * Description: Process WooCommerce payments with Trust Payments.
- * Version: 2.1.16
+ * Version: 2.1.17
  * License: Apache2
  * License URI: http://www.apache.org/licenses/LICENSE-2.0
  * Author: wallee AG
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WooCommerce_TrustPayments' ) ) {
 		 *
 		 * @var string
 		 */
-		private $version = '2.1.16';
+		private $version = '2.1.17';
 
 		/**
 		 * The single instance of the class.
@@ -226,11 +226,13 @@ if ( ! class_exists( 'WooCommerce_TrustPayments' ) ) {
 			$wc_service_transaction = WC_TrustPayments_Service_Transaction::instance();
 			$sdk_service_transaction = new \TrustPayments\Sdk\Service\TransactionService(WC_TrustPayments_Helper::instance()->get_api_client());
 			$wc_transaction_info = WC_TrustPayments_Entity_Transaction_Info::load_by_order_id($order_id);
-			$state = $sdk_service_transaction->read(get_option(self::CK_SPACE_ID), $wc_transaction_info->get_transaction_id())->getState();
 
-			if ($state == \TrustPayments\Sdk\Model\TransactionState::CONFIRMED) {
-				wp_redirect($wc_service_transaction->get_payment_page_url(get_option(self::CK_SPACE_ID), $wc_transaction_info->get_transaction_id()));
-				exit;
+			if (property_exists($wc_transaction_info,'get_transaction_id')) {
+			  $state = $sdk_service_transaction->read(get_option(self::CK_SPACE_ID), $wc_transaction_info->get_transaction_id())->getState();
+			  if ($state == \TrustPayments\Sdk\Model\TransactionState::CONFIRMED) {
+				  wp_redirect($wc_service_transaction->get_payment_page_url(get_option(self::CK_SPACE_ID), $wc_transaction_info->get_transaction_id()));
+				  exit;
+			  }
 			}
 		}
 
